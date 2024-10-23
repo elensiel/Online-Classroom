@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var profile_button: MenuButton = $ProfileButton
+@onready var home: Button = $"../SidePanel/Home"
 
 func _ready() -> void:
 	profile_button.get_popup().id_pressed.connect(get_id)

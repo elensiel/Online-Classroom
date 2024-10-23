@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://lh450bcbwxxd"]
+[gd_scene load_steps=4 format=3 uid="uid://lh450bcbwxxd"]
 
 [ext_resource type="Script" path="res://script/Instructor/instructor_main.gd" id="1_tk4nc"]
 [ext_resource type="Script" path="res://script/Instructor/top_panel.gd" id="2_qif40"]
+[ext_resource type="Script" path="res://script/Instructor/side_panel.gd" id="3_62804"]
 
 [node name="InstructorMain" type="Control"]
 layout_mode = 3
@@ -18,14 +19,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_qif40")
 
-[node name="Classroom" type="Label" parent="TopPanel"]
+[node name="Classroom" type="LinkButton" parent="TopPanel"]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 98.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 35
+toggle_mode = true
+action_mode = 0
 text = "CLASSROOM"
-horizontal_alignment = 1
-vertical_alignment = 1
+underline = 2
 
 [node name="ProfileButton" type="MenuButton" parent="TopPanel"]
 layout_mode = 0
@@ -42,29 +44,46 @@ popup/item_1/separator = true
 popup/item_2/text = "Log Out"
 popup/item_2/id = 1
 
-[node name="JoinButton" type="Button" parent="TopPanel"]
+[node name="CreateButton" type="Button" parent="TopPanel"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-text = "JOIN"
+text = "CREATE
+ICON"
 
 [node name="SidePanel" type="Panel" parent="."]
 layout_mode = 0
+script = ExtResource("3_62804")
 
 [node name="Home" type="Button" parent="SidePanel"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+focus_mode = 0
 toggle_mode = true
+action_mode = 0
 text = "HOME"
 
-[node name="Enrolled" type="Button" parent="SidePanel"]
+[node name="Classes" type="Button" parent="SidePanel"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+focus_mode = 0
 toggle_mode = true
-text = "ENROLLED"
+action_mode = 0
+text = "CLASSES"
 
+[node name="Settings" type="Button" parent="SidePanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+text = "SETTINGS"
+
+[connection signal="toggled" from="TopPanel/Classroom" to="SidePanel" method="_on_home_toggled"]
 [connection signal="pressed" from="TopPanel/ProfileButton" to="TopPanel" method="_on_profile_button_pressed"]
-[connection signal="toggled" from="SidePanel/Home" to="." method="_on_home_toggled"]
-[connection signal="toggled" from="SidePanel/Enrolled" to="." method="_on_enrolled_toggled"]
+[connection signal="toggled" from="SidePanel/Home" to="SidePanel" method="_on_home_toggled"]
+[connection signal="toggled" from="SidePanel/Classes" to="SidePanel" method="_on_classes_toggled"]
+[connection signal="toggled" from="SidePanel/Settings" to="SidePanel" method="_on_settings_toggled"]
