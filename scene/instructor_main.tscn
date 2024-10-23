@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://lh450bcbwxxd"]
+
+[ext_resource type="Script" path="res://script/Instructor/instructor_main.gd" id="1_tk4nc"]
+[ext_resource type="Script" path="res://script/Instructor/top_panel.gd" id="2_qif40"]
+
+[node name="InstructorMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tk4nc")
+
+[node name="TopPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_qif40")
+
+[node name="Classroom" type="Label" parent="TopPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 35
+text = "CLASSROOM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProfileButton" type="MenuButton" parent="TopPanel"]
+layout_mode = 0
+offset_right = 967.0
+offset_bottom = 1288.0
+text = "PROFILE
+ICON"
+icon_alignment = 1
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Account"
+popup/item_1/id = 99
+popup/item_1/separator = true
+popup/item_2/text = "Log Out"
+popup/item_2/id = 1
+
+[node name="JoinButton" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "JOIN"
+
+[node name="SidePanel" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="Home" type="Button" parent="SidePanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "HOME"
+
+[node name="Enrolled" type="Button" parent="SidePanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "ENROLLED"
+
+[connection signal="pressed" from="TopPanel/ProfileButton" to="TopPanel" method="_on_profile_button_pressed"]
+[connection signal="toggled" from="SidePanel/Home" to="." method="_on_home_toggled"]
+[connection signal="toggled" from="SidePanel/Enrolled" to="." method="_on_enrolled_toggled"]

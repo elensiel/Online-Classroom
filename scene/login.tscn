@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://hqfx8q0pmp1s"]
+
+[ext_resource type="Script" path="res://script/login.gd" id="1_f8cyv"]
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f8cyv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 580.0
+offset_bottom = 670.0
+
+[node name="UserLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 109.0
+offset_bottom = 23.0
+text = "Email Address"
+
+[node name="UserInput" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 35.0
+caret_blink = true
+
+[node name="UserWarning" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 23.0
+text = "insert warning here"
+
+[node name="PassLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 23.0
+text = "Password"
+
+[node name="PassInput" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 35.0
+select_all_on_focus = true
+caret_blink = true
+secret = true
+
+[node name="PassWarning" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 23.0
+text = "insert warning here"
+
+[node name="Login" type="Button" parent="Panel"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 50.0
+focus_mode = 0
+disabled = true
+text = "Login"
+
+[node name="SignupLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Don't have an account?	"
+
+[node name="SignupLink" type="LinkButton" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.255552, 0.475733, 1, 1)
+text = "Sign Up"
+
+[connection signal="text_changed" from="Panel/UserInput" to="." method="_on_user_input_text_changed"]
+[connection signal="text_changed" from="Panel/PassInput" to="." method="_on_pass_input_text_changed"]
+[connection signal="pressed" from="Panel/SignupLink" to="." method="_on_signup_link_pressed"]
